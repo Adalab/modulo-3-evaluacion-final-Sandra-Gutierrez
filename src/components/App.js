@@ -3,6 +3,7 @@ import callToApi from "../services/api";
 import { useEffect, useState } from "react";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
+import CharacterDetail from "./CharacterDetail";
 
 console.log("( => Ready! )");
 
@@ -11,6 +12,7 @@ function App() {
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
+  const [idCharacter, setIdCharacter] = useState('');
 
   // Api
   useEffect(() => {
@@ -26,6 +28,9 @@ function App() {
   const handleChangeFilterHouse = (value) => {
     setFilterHouse(value);
   };
+  const handleClickCharacter = (id) => {
+    setIdCharacter(id);
+  }
 
   // React Render HTML
   return (
@@ -40,7 +45,8 @@ function App() {
           handleChangeFilterName={handleChangeFilterName}
           handleChangeFilterHouse={handleChangeFilterHouse}
         />
-        <CharacterList data={data} filterName={filterName} />
+        <CharacterDetail data={data} idCharacter={idCharacter}/>
+        <CharacterList data={data} filterName={filterName} handleClickCharacter={handleClickCharacter} />
       </main>
     </>
   );

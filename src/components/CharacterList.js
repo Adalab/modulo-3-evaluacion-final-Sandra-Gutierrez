@@ -5,7 +5,7 @@ const CharacterList = (props) => {
   return (
     <section>
       <ul>
-        <CharacterCard data={props.data} filterName={props.filterName} />
+        <CharacterCard data={props.data} filterName={props.filterName} handleClickCharacter={props.handleClickCharacter} />
       </ul>
     </section>
   );
