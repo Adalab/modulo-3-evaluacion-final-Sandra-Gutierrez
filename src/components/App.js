@@ -8,18 +8,21 @@ function App() {
   // Estado
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState("");
-  const [filterHouse, setFilterHouse] = useState("");
+  const [filterHouse, setFilterHouse] = useState("Gryffindor");
   // Api
   useEffect(() => {
-    callToApi().then((response) => {
+    callToApi(filterHouse).then((response) => {
       setData(response);
     });
-  }, []);
+  }, [filterHouse]);
   // Handle Functions
   const handleChangeFilterName = (ev) => {
     setFilterName(ev.currentTarget.value);
   };
-  const handleChangeFilterHouse = () => {};
+  const handleChangeFilterHouse = (ev) => {
+    setFilterHouse(ev.currentTarget.value);
+    console.log(filterHouse);
+  };
   // Render Functions
   const renderCharacters = () => {
     return data
