@@ -1,0 +1,55 @@
+.sectionForm {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  &__labelName {
+    margin-right: 8px;
+  }
+  &__inputName {
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(224, 224, 224);
+    padding: 2px 5px;
+    @media all and (max-width: 768px) {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 2px;
+    }
+  }
+  &__labelGender {
+    margin-right: 8px;
+  }
+  &__selectGender {
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(224, 224, 224);
+    padding: 2px 5px;
+    @media all and (max-width: 768px) {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 2px;
+    }
+  }
+  &__labelHouse {
+    margin-right: 8px;
+  }
+  &__selectHouse {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(224, 224, 224);
+    padding: 2px 5px;
+    @media all and (max-width: 768px) {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 2px;
+    }
+  }
+  @media all and (max-width: 768px) {
+    flex-direction: column;
+  }
+}

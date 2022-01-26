@@ -13,7 +13,7 @@ const CharacterDetail = (props) => {
   }
   return (
     <div>
-      <Link to='/'>Volver al inicio</Link>
+      <Link className="main__btnReturn" to='/'>Volver</Link>
       <h3>Detalle del personaje</h3>
       <img src={props.data.image} alt={`Retrato de ${props.data.name}`} />
       <p>{props.data.name}</p>

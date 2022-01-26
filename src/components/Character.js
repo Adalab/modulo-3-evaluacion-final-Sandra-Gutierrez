@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../styles/Character.scss";
 
 const Character = (props) => {
     const translateSpecie = () => {

@@ -12,10 +12,11 @@ const Filters = (props) => {
   
   return (
     <section>
-      <form className="" action="" onSubmit={(ev) => ev.preventDefault()}>
+      <form className="sectionForm" action="" onSubmit={(ev) => ev.preventDefault()}>
         <FilterName handleChangeFilterName={props.handleChangeFilterName} filterName={props.filterName}/>
-        <label htmlFor="gender">¿Bruja o Mago?</label>
+        <label className="sectionForm__labelGender" htmlFor="gender">¿Bruja o Mago?</label>
         <select
+          className="sectionForm__selectGender"
           name="gender"
           id=""
           onChange={handleChangeFilterGender}
@@ -25,8 +26,9 @@ const Filters = (props) => {
           <option value="female">Mujer</option>
           <option value="male">Hombre</option>
         </select>
-        <label htmlFor="house">Selecciona la casa</label>
+        <label className="sectionForm__labelHouse" htmlFor="house">Selecciona la casa</label>
         <select
+          className="sectionForm__selectHouse"
           name="house"
           id=""
           onChange={handleChangeFilterHouse}

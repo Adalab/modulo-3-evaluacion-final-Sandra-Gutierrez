@@ -73,11 +73,10 @@ function App() {
   // React Render HTML
   return (
     <>
-      <header>
-        <h1>Expecto Patronum!</h1>
+      <header className="header">
+        <h1 className="header__title">Expecto Patronum!</h1>
       </header>
-
-      <main>
+      <main className="main">
         <Switch>
           <Route exact path="/">
             <Filters
@@ -88,7 +87,7 @@ function App() {
               handleChangeFilterHouse={handleChangeFilterHouse}
               handleChangeFilterGender={handleChangeFilterGender}
             />
-            <button onClick={handleBtnReset}>Reset</button>
+            <button className="main__btnReset" onClick={handleBtnReset}>Reset</button>
             <CharacterList data={filteredCharacters} filterName={filterName} />
           </Route>
           <Route path="/character/:characterId">
