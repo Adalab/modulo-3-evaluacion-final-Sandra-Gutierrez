@@ -5,7 +5,6 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
 import CharacterDetail from "./CharacterDetail";
-//import CharacterDetail from "./CharacterDetail";
 
 console.log("( => Ready! )");
 
@@ -51,7 +50,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>Esto va de Harry Potter...</h1>
+        <h1>Expecto Patronum!</h1>
       </header>
 
       <main>

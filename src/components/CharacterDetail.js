@@ -9,7 +9,7 @@ const CharacterDetail = (props) => {
     return props.data.gender === 'male'? 'Hombre':'Mujer';
   }
   const translateStatus = () => {
-    return props.data.alive === true ? 'Vivo':'Muerto';
+    return props.data.alive ? 'Vivo':'Muerto';
   }
   return (
     <div>
