@@ -9,7 +9,7 @@ const Filters = (props) => {
   return (
     <section>
       <form className="" action="" onSubmit={(ev) => ev.preventDefault()}>
-        <FilterName handleChangeFilterName={props.handleChangeFilterName}/>
+        <FilterName handleChangeFilterName={props.handleChangeFilterName} filterName={props.filterName}/>
         <label htmlFor="house">Selecciona la casa</label>
         <select
           name="house"

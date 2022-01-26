@@ -11,7 +11,7 @@ const callToApi = (house) => {
             house: character.house,
             gender: character.gender,
             alive: character.alive,
-            image: character.image ? character.image :'https://via.placeholder.com/210x295/ffffff/666666/?text=HarryPotter'
+            image: character.image ? character.image :`https://via.placeholder.com/210x295/ffffff/666666/?text=${character.name}`
           }
         })
         return cleanData;

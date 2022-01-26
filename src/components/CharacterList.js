@@ -8,10 +8,13 @@ const CharacterList = (props) => {
       <Character character={character}/>
     </li>
   })
+  const errorCharacter = () => {
+    return <p>No se encuentran resultados para {props.filterName}.</p>
+  }
   return (
     <section>
       <ul>
-        {characterElements}
+        {characterElements.length !== 0 ? characterElements : errorCharacter() }
       </ul>
     </section>
   );
