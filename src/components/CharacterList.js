@@ -1,11 +1,17 @@
 import "../styles/CharacterList.scss";
-import CharacterCard from "./CharacterCard";
+import Character from "./Character";
+
 
 const CharacterList = (props) => {
+  const characterElements = props.data.map((character) => {
+    return <li key={character.id}>
+      <Character character={character}/>
+    </li>
+  })
   return (
     <section>
       <ul>
-        <CharacterCard data={props.data} filterName={props.filterName} handleClickCharacter={props.handleClickCharacter} />
+        {characterElements}
       </ul>
     </section>
   );

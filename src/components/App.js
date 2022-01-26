@@ -14,7 +14,6 @@ function App() {
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
-  const [idCharacter, setIdCharacter] = useState("");
 
   // Api
   useEffect(() => {
@@ -30,14 +29,16 @@ function App() {
   const handleChangeFilterHouse = (value) => {
     setFilterHouse(value);
   };
-  const handleClickCharacter = (id) => {
-    setIdCharacter(id);
-  };
+
+  // Filtered functions
+  const filteredCharacters = data.filter((character) => {
+    return character.name.toLowerCase().includes(filterName.toLowerCase());
+  })
 
   // Render Functions
   const renderCharacterDetail = (props) => {
+    console.log('Entro');
     const routerId = props.match.params.characterId;
-    console.log(routerId);
     const foundCharacter = data.find((character) => character.id === routerId );
     return <CharacterDetail character={foundCharacter}/>
   }
@@ -59,12 +60,11 @@ function App() {
               handleChangeFilterHouse={handleChangeFilterHouse}
             />
             <CharacterList
-              data={data}
+              data={filteredCharacters}
               filterName={filterName}
-              handleClickCharacter={handleClickCharacter}
             />
           </Route>
-          <Route exact path='/character/:characterId' render={renderCharacterDetail} />
+          <Route path='/character/:characterId' render={renderCharacterDetail} />
         </Switch>
       </main>
     </>
