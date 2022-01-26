@@ -14,6 +14,7 @@ function App() {
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState(ls.get("filterName", ""));
   const [filterHouse, setFilterHouse] = useState(ls.get("filterHouse", "Gryffindor"));
+  const [filterGender, setFilterGender] = useState(ls.get("filterGender", ""));
 
   // Variables
   const infoRoute = useRouteMatch("/character/:characterId");
@@ -22,7 +23,8 @@ function App() {
   useEffect(() => {
     ls.set("filterName", filterName);
     ls.set("filterHouse", filterHouse);
-  }, [filterName, filterHouse]);
+    ls.set("filterGender", filterGender);
+  }, [filterName, filterHouse, filterGender]);
 
   // Api
   useEffect(() => {
@@ -38,15 +40,23 @@ function App() {
   const handleChangeFilterHouse = (value) => {
     setFilterHouse(value);
   };
+  const handleChangeFilterGender = (value) => {
+    setFilterGender(value);
+  };
   const handleBtnReset = () => {
     setFilterName('');
     setFilterHouse('Gryffindor');
+    setFilterGender('');
   }
 
   // Filtered functions
-  const filteredCharacters = data.filter((character) => {
+  const filteredCharacters = data
+  .filter((character) => {
     return character.name.toLowerCase().includes(filterName.toLowerCase());
-  });
+  })
+  .filter((character) => {
+    return filterGender === '' ? true : character.gender === filterGender;
+  })
 
   // Render Functions
   const renderCharacterDetail = () => {
@@ -72,8 +82,10 @@ function App() {
             <Filters
               filterName={filterName}
               filterHouse={filterHouse}
+              filterGender={filterGender}
               handleChangeFilterName={handleChangeFilterName}
               handleChangeFilterHouse={handleChangeFilterHouse}
+              handleChangeFilterGender={handleChangeFilterGender}
             />
             <button onClick={handleBtnReset}>Reset</button>
             <CharacterList data={filteredCharacters} filterName={filterName} />
