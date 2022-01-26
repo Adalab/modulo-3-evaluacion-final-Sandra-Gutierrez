@@ -8,7 +8,7 @@ const callToApi = (house) => {
             id: index,
             name: character.name,
             species: character.species,
-            house: character.species,
+            house: character.house,
             gender: character.gender,
             alive: character.alive,
             image: character.image

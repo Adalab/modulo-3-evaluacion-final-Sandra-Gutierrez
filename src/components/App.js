@@ -1,7 +1,7 @@
 import "../styles/App.scss";
 import callToApi from "../services/api";
 import { useEffect, useState } from "react";
-import { Route, Switch, useRouteMatch, Link } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
 import CharacterDetail from "./CharacterDetail";
@@ -14,6 +14,9 @@ function App() {
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
+  
+  // Variables
+  const infoRoute = useRouteMatch('/character/:characterId');
 
   // Api
   useEffect(() => {
@@ -33,15 +36,16 @@ function App() {
   // Filtered functions
   const filteredCharacters = data.filter((character) => {
     return character.name.toLowerCase().includes(filterName.toLowerCase());
-  })
+  });
 
   // Render Functions
-  const renderCharacterDetail = (props) => {
-    console.log('Entro');
-    const routerId = props.match.params.characterId;
-    const foundCharacter = data.find((character) => character.id === routerId );
-    return <CharacterDetail character={foundCharacter}/>
-  }
+  const renderCharacterDetail = () => {
+    if( infoRoute !== null){
+          const routerId = parseInt(infoRoute.params.characterId);
+    const foundCharacter = data.find((character) => character.id === routerId);
+    return foundCharacter;
+    }
+  };
 
   // React Render HTML
   return (
@@ -52,19 +56,18 @@ function App() {
 
       <main>
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Filters
               filterName={filterName}
               filterHouse={filterHouse}
               handleChangeFilterName={handleChangeFilterName}
               handleChangeFilterHouse={handleChangeFilterHouse}
             />
-            <CharacterList
-              data={filteredCharacters}
-              filterName={filterName}
-            />
+            <CharacterList data={filteredCharacters} filterName={filterName} />
           </Route>
-          <Route path='/character/:characterId' render={renderCharacterDetail} />
+          <Route path="/character/:characterId">
+            <CharacterDetail data={renderCharacterDetail()} />
+          </Route>
         </Switch>
       </main>
     </>
