@@ -1,18 +1,30 @@
-.sectionList{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: 20px;
-    &__li{
-        background-color: rgb(116, 20, 20);
-        img{
-            width: 100%;
-        }
-        p{
-            color: whitesmoke;
-        }
+.sectionList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+  &__li {
+    background-color: rgb(116, 20, 20);
+    &--title {
+      font-size: 22px;
+      color: whitesmoke;
     }
-    @media all and (max-width:768px){
-        grid-template-columns: 1fr 1fr;
+    &--specie {
+      font-size: 15px;
+      padding-bottom: 20px;
+      color: whitesmoke;
     }
+    img {
+      width: 100%;
+      padding: 20px 20px 10px;
+    }
+  }
+  @media all and (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  &__liDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
 }

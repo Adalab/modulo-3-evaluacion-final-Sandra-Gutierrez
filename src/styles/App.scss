@@ -32,7 +32,7 @@ body {
 }
 .main {
   padding: 20px;
-  width: 1100px;
+  max-width: 1100px;
   margin: 0 auto;
   &__btnReset{
     margin-bottom: 10px;

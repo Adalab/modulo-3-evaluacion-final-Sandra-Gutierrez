@@ -7,9 +7,16 @@ const Character = (props) => {
     }
   return (
     <Link to={`/character/${props.character.id}`}>
-        <img src={props.character.image} alt={`Retrato de ${props.character.name}`} />
-        <p>{props.character.name}</p>
-        <p>{translateSpecie()}</p>
+      <div className="sectionList__liDiv">
+      <img
+        src={props.character.image}
+        alt={`Retrato de ${props.character.name}`}
+      />
+      <div>
+        <p className="sectionList__li--title">{props.character.name}</p>
+        <p className="sectionList__li--specie">{translateSpecie()}</p>
+      </div>
+      </div>
     </Link>
   );
 };
