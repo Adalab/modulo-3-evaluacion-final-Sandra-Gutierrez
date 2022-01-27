@@ -74,7 +74,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1 className="header__title">Expecto Patronum!</h1>
+        <h1 className="header__title">Expecto Patronum !</h1>
       </header>
       <main className="main">
         <Switch>
@@ -88,7 +88,7 @@ function App() {
               handleChangeFilterGender={handleChangeFilterGender}
             />
             <button className="main__btnReset" onClick={handleBtnReset}>Reset</button>
-            <CharacterList data={filteredCharacters} filterName={filterName} />
+            <CharacterList data={filteredCharacters} filterName={filterName} filterHouse={filterHouse}/>
           </Route>
           <Route path="/character/:characterId">
             <CharacterDetail data={renderCharacterDetail()} />

@@ -23,8 +23,8 @@ const Filters = (props) => {
           value={props.filterGender}
         >
           <option value="">Todos</option>
-          <option value="female">Mujer</option>
-          <option value="male">Hombre</option>
+          <option value="female">Bruja</option>
+          <option value="male">Mago</option>
         </select>
         <label className="sectionForm__labelHouse" htmlFor="house">Selecciona la casa</label>
         <select

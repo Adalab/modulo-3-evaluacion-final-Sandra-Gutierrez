@@ -1,4 +1,4 @@
-import logoHogw from "../images/hogwarts-1112x1200.png"
+import logoHogw from "../images/hogwartsEscudo-500x500.png"
 
 const callToApi = (house) => {
     return fetch(`http://hp-api.herokuapp.com/api/characters/house/${house}`)
@@ -13,7 +13,6 @@ const callToApi = (house) => {
             gender: character.gender,
             alive: character.alive,
             image: character.image ? character.image : logoHogw
-/*             image: character.image ? character.image :`https://via.placeholder.com/210x295/ffffff/666666/?text=${character.name}` */
           }
         })
         return cleanData;

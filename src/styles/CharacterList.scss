@@ -3,7 +3,6 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
   &__li {
-    background-color: rgb(116, 20, 20);
     &--title {
       font-size: 22px;
       color: whitesmoke;
@@ -15,7 +14,7 @@
     }
     img {
       width: 100%;
-      padding: 20px 20px 10px;
+      padding-bottom: 10px;
     }
   }
   @media all and (max-width: 768px) {
@@ -26,5 +25,27 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    &:hover{
+      box-shadow: 1px 1px 20px #ffffff;
+    }
   }
+  &__error{
+    color: red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.gryff{
+  background-color: rgb(116, 20, 20);
+}
+.sly{
+  background-color: rgb(0, 90, 60);
+}
+.rav{
+  background-color: rgb(3, 34, 121);
+}
+.huff{
+  background-color: rgb(207, 169, 0);
 }

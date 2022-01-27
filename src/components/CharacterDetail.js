@@ -18,7 +18,7 @@ const CharacterDetail = (props) => {
       : "Genero desconocido";
   };
   const translateGender = () => {
-    return props.data.gender === "male" ? "Hombre" : "Mujer";
+    return props.data.gender === "male" ? "Mago" : "Bruja";
   };
   const translateStatus = () => {
     return props.data.alive ? "Vivo" : "Muerto";
@@ -46,11 +46,11 @@ const CharacterDetail = (props) => {
           alt={`Retrato de ${props.data.name}`}
         />
         <div className="cardDetail__info">
+          <img className="cardDetail__info--iconHouse" src={addIconsHouse()} alt={props.data.house} title={`Casa: ${props.data.house}`}></img>
           <h3 className="cardDetail__info--title">Detalle del personaje</h3>
           <p>Nombre: {props.data.name}</p>
-          <p>Casa:<img className="cardDetail__info--iconHouse" src={addIconsHouse()} alt=''></img></p>
           <p>Género: {translateGender()}</p>
-          <p>Estatus: {translateStatus()}</p>
+          <p>Estado: {translateStatus()}</p>
           <p>Especie: {translateSpecie()}</p>
         </div>
       </div>
