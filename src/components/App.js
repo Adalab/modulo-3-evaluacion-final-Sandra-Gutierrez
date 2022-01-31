@@ -93,13 +93,29 @@ function App() {
   }
   };
 
+  const renderBackgroundDetail = () => {
+    if(infoRoute !== null){
+      return filterHouse === "Gryffindor"
+      ? "backGryff"
+      : filterHouse === "Slytherin"
+      ? "backSlyth"
+      : filterHouse === "Ravenclaw"
+      ? "backRav"
+      : filterHouse === "Hufflepuff"
+      ? "backHuff"
+      : "";
+    }else{
+      return "";
+    }
+  };
+
   // React Render HTML
   return (
     <>
       <header className="header">
         <h1 className="header__title">Expecto Patronum !</h1>
       </header>
-      <main className="main">
+      <main className={`main ${renderBackgroundDetail()}`}>
         <Switch>
           <Route exact path="/">
             <Filters

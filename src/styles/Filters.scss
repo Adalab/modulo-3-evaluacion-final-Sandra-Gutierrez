@@ -5,24 +5,24 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-end;
-  &__find{
+  &__find {
     margin-bottom: 10px;
   }
-  &__select{
+  &__select {
     margin-bottom: 10px;
   }
-  &__check{
+  &__check {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    label{
+    label {
       margin-right: 5px;
     }
   }
-  &__radio{
+  &__radio {
     display: flex;
     align-items: center;
-    label{
+    label {
       margin: 0px 5px;
     }
   }
@@ -55,6 +55,7 @@
       margin: 0 auto;
       text-align: center;
       margin-top: 2px;
+      margin-bottom: 10px;
     }
   }
   &__labelHouse {
@@ -73,6 +74,7 @@
     }
   }
   @media all and (max-width: 768px) {
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

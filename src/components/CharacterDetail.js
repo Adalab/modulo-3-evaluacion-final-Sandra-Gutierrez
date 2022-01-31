@@ -35,24 +35,12 @@ const CharacterDetail = (props) => {
       : "Casa desconocida";
   };
 
-  const renderBackgroundDetail = () => {
-    return props.data.house === "Gryffindor"
-    ? "backGryff"
-    : props.data.house === "Slytherin"
-    ? "backSlyth"
-    : props.data.house === "Ravenclaw"
-    ? "backRav"
-    : props.data.house === "Hufflepuff"
-    ? "backHuff"
-    : "";
-  };
-
   return (
-    <div>
+    <div className="cardDetailDiv">
       <Link className="btnReturn" to="/">
         Volver
       </Link>
-      <div className={`cardDetail ${renderBackgroundDetail()}`}>
+      <div className="cardDetail">
         <img
           className="cardDetail--img"
           src={props.data.image}
