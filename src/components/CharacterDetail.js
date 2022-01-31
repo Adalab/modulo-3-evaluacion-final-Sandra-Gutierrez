@@ -1,9 +1,9 @@
 import "../styles/CharacterDetail.scss";
 import { Link } from "react-router-dom";
-import gryffIcon from "../images/gryffindor-icon-100x100.png"
-import slyIcon from "../images/slythering-icon-100x100.png"
-import ravIcon from "../images/ravenclaw-icon-100x100.png"
-import huffIcon from "../images/hufflepuff-icon-100x100.png"
+import gryffIcon from "../images/gryffindor-icon-100x100.png";
+import slyIcon from "../images/slythering-icon-100x100.png";
+import ravIcon from "../images/ravenclaw-icon-100x100.png";
+import huffIcon from "../images/hufflepuff-icon-100x100.png";
 
 const CharacterDetail = (props) => {
   const translateSpecie = () => {
@@ -33,20 +33,38 @@ const CharacterDetail = (props) => {
       : props.data.house === "Hufflepuff"
       ? huffIcon
       : "Casa desconocida";
-  }
+  };
+
+  const renderBackgroundDetail = () => {
+    return props.data.house === "Gryffindor"
+    ? "backGryff"
+    : props.data.house === "Slytherin"
+    ? "backSlyth"
+    : props.data.house === "Ravenclaw"
+    ? "backRav"
+    : props.data.house === "Hufflepuff"
+    ? "backHuff"
+    : "";
+  };
+
   return (
     <div>
       <Link className="btnReturn" to="/">
         Volver
       </Link>
-      <div className="cardDetail">
+      <div className={`cardDetail ${renderBackgroundDetail()}`}>
         <img
           className="cardDetail--img"
           src={props.data.image}
           alt={`Retrato de ${props.data.name}`}
         />
         <div className="cardDetail__info">
-          <img className="cardDetail__info--iconHouse" src={addIconsHouse()} alt={props.data.house} title={`Casa: ${props.data.house}`}></img>
+          <img
+            className="cardDetail__info--iconHouse"
+            src={addIconsHouse()}
+            alt={props.data.house}
+            title={`Casa: ${props.data.house}`}
+          ></img>
           <h3 className="cardDetail__info--title">Detalle del personaje</h3>
           <p>Nombre: {props.data.name}</p>
           <p>Género: {translateGender()}</p>
@@ -58,3 +76,4 @@ const CharacterDetail = (props) => {
   );
 };
 export default CharacterDetail;
+

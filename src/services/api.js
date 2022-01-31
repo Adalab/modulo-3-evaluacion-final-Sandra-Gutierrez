@@ -6,12 +6,13 @@ const callToApi = (house) => {
       .then((response) => {
         const cleanData = response.map((character, index) => {
           return{
-            id: index,
+            id: `${character.house.toLowerCase()}-${index}`,
             name: character.name,
             species: character.species,
             house: character.house,
             gender: character.gender,
             alive: character.alive,
+            hogwartsStudent: character.hogwartsStudent,
             image: character.image ? character.image : logoHogw
           }
         })

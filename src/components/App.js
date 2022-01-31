@@ -13,9 +13,13 @@ function App() {
   // Estado
   const [data, setData] = useState([]);
   const [filterName, setFilterName] = useState(ls.get("filterName", ""));
-  const [filterHouse, setFilterHouse] = useState(ls.get("filterHouse", "Gryffindor"));
+  const [filterHouse, setFilterHouse] = useState(
+    ls.get("filterHouse", "Gryffindor")
+  );
   const [filterGender, setFilterGender] = useState(ls.get("filterGender", ""));
-
+  const [filterStudent, setFilterStudent] = useState(false);
+  const [filterAlive, setFilterAlive] = useState(undefined);
+  
   // Variables
   const infoRoute = useRouteMatch("/character/:characterId");
 
@@ -43,31 +47,50 @@ function App() {
   const handleChangeFilterGender = (value) => {
     setFilterGender(value);
   };
-  const handleBtnReset = () => {
-    setFilterName('');
-    setFilterHouse('Gryffindor');
-    setFilterGender('');
+  const handleChangeFilterStudent = (value) => {
+    setFilterStudent(value);
+  };
+  const handleChangeAlive = (value) => {
+    setFilterAlive(value === "alive" ? true : value === "notAlive" ? false : true);
   }
+  const handleBtnReset = () => {
+    setFilterName("");
+    setFilterHouse("Gryffindor");
+    setFilterGender("");
+  };
 
   // Filtered functions
   const filteredCharacters = data
-  .filter((character) => {
-    return character.name.toLowerCase().includes(filterName.toLowerCase());
-  })
-  .filter((character) => {
-    return filterGender === '' ? true : character.gender === filterGender;
-  })
-  .sort((a, b) => a.name.localeCompare(b.name));
+    .filter((character) => {
+      return character.name.toLowerCase().includes(filterName.toLowerCase());
+    })
+    .filter((character) => {
+      return filterGender === "" ? true : character.gender === filterGender;
+    })
+    .filter((character) => {
+      return filterStudent ? character.hogwartsStudent : true;
+    }) 
+    .filter((character) => {
+      return filterAlive ? character.alive === true : filterAlive === false ? character.alive === false : true;
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   // Render Functions
   const renderCharacterDetail = () => {
-    if (infoRoute !== null) {
-      const routerId = parseInt(infoRoute.params.characterId);
-      const foundCharacter = data.find(
-        (character) => character.id === routerId
-      );
-      return foundCharacter;
-    }
+
+    const characterDetails =
+    infoRoute !== null ? infoRoute.params.characterId : "";    
+    const selectedCharacter = data.find(
+      (eachData) => eachData.id === characterDetails
+    );
+    return selectedCharacter || { name: "El personaje no existe",
+    species: "undefined",
+    gender: "undefined",
+    house: "undefined",
+    alive: false,
+    image: "undefined",
+    id: "undefined"
+  }
   };
 
   // React Render HTML
@@ -83,12 +106,22 @@ function App() {
               filterName={filterName}
               filterHouse={filterHouse}
               filterGender={filterGender}
+              filterStudent={filterStudent}
+              filterAlive={filterAlive}
               handleChangeFilterName={handleChangeFilterName}
               handleChangeFilterHouse={handleChangeFilterHouse}
               handleChangeFilterGender={handleChangeFilterGender}
+              handleChangeFilterStudent={handleChangeFilterStudent}
+              handleChangeAlive={handleChangeAlive}
             />
-            <button className="main__btnReset" onClick={handleBtnReset}>Reset</button>
-            <CharacterList data={filteredCharacters} filterName={filterName} filterHouse={filterHouse}/>
+            <button className="main__btnReset" onClick={handleBtnReset}>
+              Reset
+            </button>
+            <CharacterList
+              data={filteredCharacters}
+              filterName={filterName}
+              filterHouse={filterHouse}
+            />
           </Route>
           <Route path="/character/:characterId">
             <CharacterDetail data={renderCharacterDetail()} />
