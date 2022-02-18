@@ -1,7 +1,7 @@
 import logoHogw from "../images/hogwartsEscudo-500x500.png"
 
 const callToApi = (house) => {
-    return fetch(`http://hp-api.herokuapp.com/api/characters/house/${house}`)
+    return fetch(`https://hp-api.herokuapp.com/api/characters/house/${house}`)
       .then((response) => response.json())
       .then((response) => {
         const cleanData = response.map((character, index) => {
